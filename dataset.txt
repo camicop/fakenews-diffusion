@@ -1,0 +1,37 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CollegeMsg: (dataset prof) [https://snap.stanford.edu/data/CollegeMsg.html][http://konect.cc/networks/opsahl-ucsocial/]
+This directed network contains sent messages between the users of an online community
+of students from the University of California, Irvine. A node represents a user.
+A directed edge represents a sent message. Multiple edges denote multiple messages.
+
+Nodes: 1,899
+Edges: 59,835
+Unique edges: 20,296
+
+time: 1098744742-1082008561 = 16736181 secondi (193 giorni ca.)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+dnc-temporalGraph: [http://konect.cc/networks/dnc-temporalGraph/]
+This is the directed network of emails in the 2016 Democratic National Committee email leak.
+The Democratic National Committee (DNC) is the formal governing body for the United States Democratic Party.
+A dump of emails of the DNC was leaked in 2016. Nodes in the network correspond to persons in the dataset.
+A directed edge in the dataset denotes that a person has sent an email to another person.
+Since an email can have any number of recipients, a single email is mapped to multiple edges in this dataset,
+resulting in the number of edges in this network being about twice the number of emails in the dump.
+
+Nodes: 2,029
+Edges: 39,264
+Unique edges: 5,598
+
+time: 1463659109-1463507482 = 151627 secondi (42 ore ca.)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+email-Eu-core-temporal [https://snap.stanford.edu/data/email-Eu-core-temporal.html]
+The network was generated using email data from a large European research institution.
+We have anonymized information about all incoming and outgoing email between members of the research institution. 
+
+Nodes: 986
+Edges: 332334
+Unique edges: 24929
+
+time: 803 days
