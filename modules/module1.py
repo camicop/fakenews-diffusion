@@ -5,18 +5,35 @@ import matplotlib.pyplot as plt
 
 
 #constants
+
+k = 1 # seed size
+
+# college dataset
 USERS = 1899 
 IN_FILE = "CollegeMsg.txt"
-num_windows = 50
-prob = 0.1
 
-# libreria dei grafi
-aggregated_graphs = {}
-infected = np.full(USERS, False)
+# democratic dataset
+"""
+USERS = 2029
+IN_FILE = "dnc-temporalGraph.txt"
+"""
+# email dataset
+"""
+USERS = 986
+IN_FILE = "email-Eu-core-temporal.txt"
+"""
+
+num_windows = 50 # numero di finestre in cui dividere il grafo temporale
+prob = 0.1 # probabilità di diffusione dell'infezione
 
 
 
-#funzione che crea grafi statici aggregati
+aggregated_graphs = {} # libreria dei grafi statici aggregati
+infected = np.full(USERS, False) # vettore degli infetti
+
+
+
+# funzione che crea grafi statici aggregati
 def aggregate(lines):
     temporal_graph = nx.MultiGraph()
     numero_linee = 0
@@ -58,14 +75,14 @@ def aggregate(lines):
         print(f"{i}: {aggregated_graph.number_of_nodes()} nodes")
     
 
-
+# funzione che simula l'infezione per un nodo infetto
 def infection(seed):
     global infected
     infected = np.full(USERS, False)
     infected[seed-1] = True
     
     for window in aggregated_graphs.values():
-        new_infected = set()
+        new_infected = set() # salvo i nodi appena infettati in un set, e alla fine li aggiorno sul vettore di infetti "infected"
         for u, v in window.edges():
             if infected[int(u)-1] == True:
                 rand_num = random.random()
@@ -99,13 +116,12 @@ def simulation(probability):
     aggregate(lines)
 
     # per ogni nodo simuliamo una diffusione
-    for i in range(10):
+    for i in range(10): # simulo sui primi 10 nodi
         print(f"{i})")
         infection(i)
         print()
 
 
-    
 
 if __name__ == "__main__":
     simulation(prob)
