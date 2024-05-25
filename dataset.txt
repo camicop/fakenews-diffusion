@@ -19,11 +19,15 @@ A directed edge in the dataset denotes that a person has sent an email to anothe
 Since an email can have any number of recipients, a single email is mapped to multiple edges in this dataset,
 resulting in the number of edges in this network being about twice the number of emails in the dump.
 
-Nodes: 2,029
+Nodes: 1,891 // sul sito dice 2,029, ma ho modificato il dataset [vedi sotto]
 Edges: 39,264
 Unique edges: 5,598
 
 time: 1463659109-1463507482 = 151627 secondi (42 ore ca.)
+ {nota dataset dnc}
+ Il dataset è stato riscritto dal file originale del sito, in quanto i datastamp non erano in ordine, e mancano numerosi nodi.
+ Gli edge sono stati riordinati e i nodi rinominati.
+ Ho inoltre rimosso i primi due edge, perché causavano la creazione di metà finestre temporali vuote
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 email-Eu-core-temporal [https://snap.stanford.edu/data/email-Eu-core-temporal.html]
@@ -35,3 +39,7 @@ Edges: 332334
 Unique edges: 24929
 
 time: 803 days
+
+ {nota su dataset email_Eu}
+ Il dataset è stato riscritto dal file originale del sito, in quanto i nodi non andavano da 1 a 986 ma da 0 a 1004 [vedi file conteggio_dataset.py applicato su dataset originale]
+ Perciò, è stato modificato il file in modo che i nodi andassero da 1 a 986, come gli altri dataset
