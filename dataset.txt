@@ -11,7 +11,7 @@ Unique edges: 20,296
 time: 1098744742-1082008561 = 16736181 secondi (193 giorni ca.)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-dnc-temporalGraph: [http://konect.cc/networks/dnc-temporalGraph/]
+dnc-temporalGraph: [http://konect.cc/networks/dnc-temporalGraph/][https://networkrepository.com/email-dnc.php]
 This is the directed network of emails in the 2016 Democratic National Committee email leak.
 The Democratic National Committee (DNC) is the formal governing body for the United States Democratic Party.
 A dump of emails of the DNC was leaked in 2016. Nodes in the network correspond to persons in the dataset.
@@ -27,19 +27,15 @@ time: 1463659109-1463507482 = 151627 secondi (42 ore ca.)
  {nota dataset dnc}
  Il dataset è stato riscritto dal file originale del sito, in quanto i datastamp non erano in ordine, e mancano numerosi nodi.
  Gli edge sono stati riordinati e i nodi rinominati.
- Ho inoltre rimosso i primi due edge, perché causavano la creazione di metà finestre temporali vuote
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 email-Eu-core-temporal [https://snap.stanford.edu/data/email-Eu-core-temporal.html]
 The network was generated using email data from a large European research institution.
 We have anonymized information about all incoming and outgoing email between members of the research institution. 
 
-Nodes: 986
-Edges: 332334
-Unique edges: 24929
-
-time: 803 days
+Nodes: 816 // inizialmente 986, ma ho modificato il dataset
+Edges: 83083 // inizialmente di più
+Unique edges: 11685
 
  {nota su dataset email_Eu}
- Il dataset è stato riscritto dal file originale del sito, in quanto i nodi non andavano da 1 a 986 ma da 0 a 1004 [vedi file conteggio_dataset.py applicato su dataset originale]
- Perciò, è stato modificato il file in modo che i nodi andassero da 1 a 986, come gli altri dataset
+ Il dataset è stato riscritto dal file originale del sito, ho riordinato le righe, rimosso gli ultimi 3/4 delle interazioni e rinominato i nodi
