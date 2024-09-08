@@ -9,7 +9,7 @@ K_BOTS = 10 # seed size di bot e factChecker
 PROB_BOT = 1 # probabilità di diffusione dell'infezione
 PROB_FACTCHECKER = 0.29 # probabilità di diffusione del debunking
 DATASET = "CollegeMsg" # dataset scelto
-CHOOSING_METHOD = "3" # metodo di scelta nodi
+CHOOSING_METHOD = "10" # metodo di scelta nodi
 BOT_METHOD = "3"
 
 NUM_SIMULATIONS = 1
@@ -67,10 +67,28 @@ def draw_graph():
             node_colors.append('red')
         elif state[node] == "REC":
             node_colors.append('green')
+        elif state[node] == "SEED_INF":
+            node_colors.append('purple')
+        elif state[node] == "SEED_REC":
+            node_colors.append('darkgreen')
         else:
-            node_colors.append('blue')  # Puoi scegliere un altro colore di default se preferisci
+            node_colors.append((0, 0, 1, 1))  
 
-    nx.draw(social_network, pos, node_color=node_colors, node_size=4)
+    # Definisci le dimensioni dei nodi in base al grado (numero di vicini)
+    node_sizes = [
+        100 if state[node] in ["SEED_REC", "SEED_INF"] 
+        else 5 # else (len(list(social_network.neighbors(node)))  ) / 6 + 5
+        for node in social_network.nodes()
+    ]
+    # Disegna il grafo
+    nx.draw(
+        social_network, 
+        pos, 
+        node_color=node_colors, 
+        node_size=  node_sizes, 
+        edge_color=(0.83, 0.83, 0.83, 1),
+        width=0.01  # Spessore delle linee ridotto
+    )
     plt.show()
 
 def reset_all():
@@ -151,8 +169,8 @@ def aggregate():
 
         # graph drawing
         
-        pos = nx.spring_layout(social_network, k=0.3, iterations=50)  # Layout per posizionare i nodi nel grafo
-        draw_graph()
+        #pos = nx.spring_layout(social_network, k=0.28, iterations=50)  # Layout per posizionare i nodi nel grafo
+        #draw_graph()
         
         
 
@@ -489,6 +507,8 @@ def infection():
         # scelta nodi bot/debunk
         seed_choosing(window_i)
 
+        # draw_graph()
+
         while(indice_interazione < len(all_interactions) and all_interactions[indice_interazione][2] <= end_window):
             interaction_in_window += 1
             
@@ -519,7 +539,7 @@ def infection():
             indice_interazione += 1
         # print(f"\t {interaction_in_window} interactions")
 
-        draw_graph()
+        
         window_i += 1
 
 def infection_stats():
